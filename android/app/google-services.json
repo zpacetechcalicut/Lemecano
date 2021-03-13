@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "896632310347",
+    "firebase_url": "https://vehicleservice-5bfa9-default-rtdb.firebaseio.com",
+    "project_id": "vehicleservice-5bfa9",
+    "storage_bucket": "vehicleservice-5bfa9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896632310347:android:1e79de2e5634d90e371bce",
+        "android_client_info": {
+          "package_name": "com.example.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896632310347-nbp9t8vjv8td27cb72u40u3gldg62bim.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM4zaY2annGAy4ikmszUa8gzx_10Nju2I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896632310347-nbp9t8vjv8td27cb72u40u3gldg62bim.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896632310347:android:28d871a2e17d2a53371bce",
+        "android_client_info": {
+          "package_name": "com.service.lemecano"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896632310347-nbp9t8vjv8td27cb72u40u3gldg62bim.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM4zaY2annGAy4ikmszUa8gzx_10Nju2I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896632310347-nbp9t8vjv8td27cb72u40u3gldg62bim.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896632310347:android:02f405e6e2866da2371bce",
+        "android_client_info": {
+          "package_name": "com.service.vehicleservice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896632310347-tlclte96b0rg3suiqueh7cqjaaovvtiu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.service.vehicleservice",
+            "certificate_hash": "0f6d1046acb6776ac06fbebaad87f5299e89e481"
+          }
+        },
+        {
+          "client_id": "896632310347-nbp9t8vjv8td27cb72u40u3gldg62bim.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM4zaY2annGAy4ikmszUa8gzx_10Nju2I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896632310347-nbp9t8vjv8td27cb72u40u3gldg62bim.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
