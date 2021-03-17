@@ -24,10 +24,13 @@ class _ServiceCardState extends State<ServiceCard> {
           if (snapshot.hasData) {
             lists.clear();
             Map<dynamic, dynamic> values = snapshot.data.value;
+            if(values !=null){
             values.forEach((key, values) {
               lists.add(values);
-            });
-            return ListView.builder(
+            });}
+            return lists.isEmpty
+                ? Container(child: Center(child: Text('No Data Found',style: TextStyle(color: kcolorash,fontSize: 20),)))
+                : ListView.builder(
                 physics: ClampingScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: lists.length,

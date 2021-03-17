@@ -14,7 +14,7 @@ class Customer extends StatefulWidget {
 class _CustomerState extends State<Customer> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home:  DefaultTabController(

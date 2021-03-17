@@ -15,13 +15,15 @@ class _ViewBookingState extends State<ViewBooking> {
   var listss = List();
   @override
   Widget build(BuildContext context) {
+     double kwidth = MediaQuery.of(context).size.width;
+    double kheight = MediaQuery.of(context).size.height;
     return Container(
       margin: EdgeInsets.all(15),
       child: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
-              height: 30,
+              height: kheight/13,
             ),
             FutureBuilder(
                 future: dbRef.once(),
@@ -29,42 +31,56 @@ class _ViewBookingState extends State<ViewBooking> {
                   if (snapshot.hasData) {
                     listss.clear();
                     Map<dynamic, dynamic> values = snapshot.data.value;
-                    values.forEach((key, values) {
-                      listss.add(values);
-                    });
-                    return new ListView.builder(
-                        physics: ClampingScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: listss.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Card(
-                              child: Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                    "Vehicle no: " +
-                                        listss[index]["t_vehicle_no"],
-                                    style: kTextStyle),
-                                Text("Locality: " + listss[index]["t_locality"],
-                                    style: kTextStyle),
-                                Text("Vehicle Type: " + listss[index]["t_type"],
-                                    style: kTextStyle),
-                                Text(
-                                    "Name of Driver: " +
-                                        listss[index]["t_dname"],
-                                    style: kTextStyle),
-                                Text("Phone no: " + listss[index]["t_phone"],
-                                    style: kTextStyle),
-                                Text(
-                                    "Driver Licence No: " +
-                                        listss[index]["t_license"],
-                                    style: kTextStyle),
-                              ],
-                            ),
-                          ));
-                        });
+                    if (values != null) {
+                      values.forEach((key, values) {
+                        listss.add(values);
+                      });
+                    }
+                    return listss.isEmpty
+                        ? Container(
+                            child: Center(
+                                child: Text(
+                            'No Data Found',
+                            style: TextStyle(color: kcolorash, fontSize: 20),
+                          )))
+                        : ListView.builder(
+                            physics: ClampingScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: listss.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Card(
+                                  child: Padding(
+                                padding: EdgeInsets.all(16.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                        "Vehicle no: " +
+                                            listss[index]["t_vehicle_no"],
+                                        style: kTextStyle),
+                                    Text(
+                                        "Locality: " +
+                                            listss[index]["t_locality"],
+                                        style: kTextStyle),
+                                    Text(
+                                        "Vehicle Type: " +
+                                            listss[index]["t_type"],
+                                        style: kTextStyle),
+                                    Text(
+                                        "Name of Driver: " +
+                                            listss[index]["t_dname"],
+                                        style: kTextStyle),
+                                    Text(
+                                        "Phone no: " + listss[index]["t_phone"],
+                                        style: kTextStyle),
+                                    Text(
+                                        "Driver Licence No: " +
+                                            listss[index]["t_license"],
+                                        style: kTextStyle),
+                                  ],
+                                ),
+                              ));
+                            });
                   }
                   return CircularProgressIndicator(
                     valueColor:

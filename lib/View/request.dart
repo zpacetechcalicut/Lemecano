@@ -12,6 +12,7 @@ class Request extends StatefulWidget {
 class _RequestState extends State<Request> {
   @override
   Widget build(BuildContext context) {
+    double kheight = MediaQuery.of(context).size.height;
     
     return Scaffold(
         appBar: AppBar(title: Text('Request'),backgroundColor: kPrimaryColor,),
@@ -20,7 +21,7 @@ class _RequestState extends State<Request> {
              margin:   EdgeInsets.all(15),
             child: Column(
               children: [
-                SizedBox(height: 30),
+                SizedBox(height: kheight/13),
                 RequestCard(),
 
               ],
