@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'View/auto/createAuto_booking.dart';
 import 'View/crain/createCrain_booking.dart';
+import 'View/create_service_form.dart';
 
 class ServiceDropdown extends StatefulWidget {
   // const ServiceDropdown({ Key? key }) : super(key: key);
@@ -74,7 +75,7 @@ class _ServiceDropdownState extends State<ServiceDropdown> {
                 ] else if (_chosenValue == "Crain Service") ...[
                   CrainForm(),
                   ]else if (_chosenValue == "Add Service") ...[
-                  AutoForm(),
+                  ServiceForm(),
                 ],
               ]),
             ],
