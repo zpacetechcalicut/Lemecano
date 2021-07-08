@@ -7,7 +7,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="Le Mecano"
+        android:label="Le Mecano Admin"
         android:icon="@mipmap/applogo">
         <activity
             android:name=".MainActivity"

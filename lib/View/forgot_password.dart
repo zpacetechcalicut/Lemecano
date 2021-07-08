@@ -1,7 +1,6 @@
 import 'package:admin/constats.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class ResetScreen extends StatefulWidget {
   @override
@@ -70,7 +69,6 @@ class _ResetScreenState extends State<ResetScreen> {
                 textColor: kPrimaryLightColor,
                 child: Text('Send Request'),
                 onPressed: () {
-                
                   //  Scaffold.of(context).showSnackBar(SnackBar(
                   //                       content: Text('Successfully Added')));
 

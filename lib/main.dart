@@ -1,7 +1,8 @@
+import 'package:admin/constats.dart';
 import 'package:flutter/material.dart';
-import 'View/loginn.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'View/splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,8 +16,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        // title: 'Flutter Demo',
         theme: ThemeData(
+          primaryColor: kPrimaryColor,
           // This is the theme of your application.
           //
           // Try running your application with "flutter run". You'll see the
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
           // closer together (more dense) than on mobile platforms.
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: Home());
+        home: SplashScreen());
     //EPForm());
     //Home());
   }
