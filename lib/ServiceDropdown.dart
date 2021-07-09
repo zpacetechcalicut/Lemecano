@@ -39,7 +39,7 @@ class _ServiceDropdownState extends State<ServiceDropdown> {
                     style: TextStyle(color: Colors.white),
                     iconEnabledColor: kPrimaryLightColor,
                     items: <String>[
-                      "Add service"
+                      "Add Service",
                       "Taxi Service",
                       'Auto Service',
                       'Crain Service',
@@ -68,14 +68,14 @@ class _ServiceDropdownState extends State<ServiceDropdown> {
                 ),
               ),
               Column(children: [
-                if (_chosenValue == "Taxi Service") ...[
-                  TaxiForm(),
+                if (_chosenValue == "Add Service") ...[
+                  ServiceForm(),
                 ] else if (_chosenValue == "Auto Service") ...[
                   AutoForm(),
                 ] else if (_chosenValue == "Crain Service") ...[
                   CrainForm(),
-                  ]else if (_chosenValue == "Add Service") ...[
-                  ServiceForm(),
+                  ]else if (_chosenValue == "Taxi Service") ...[
+                  TaxiForm(),
                 ],
               ]),
             ],

@@ -1,5 +1,6 @@
 import 'package:admin/constats.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tags/flutter_tags.dart';
 
 import 'package:firebase_database/firebase_database.dart';
 
@@ -10,6 +11,8 @@ class ServiceForm extends StatefulWidget {
 
 class _ServiceFormState extends State<ServiceForm> {
   final _formKey = GlobalKey<FormState>();
+  final tagfield = TextEditingController();
+  List<String> selectedTags = [];
 
   final phnController = TextEditingController();
   final vehiclennoController = TextEditingController();
@@ -158,6 +161,60 @@ class _ServiceFormState extends State<ServiceForm> {
                       },
                     ),
                   ),
+                  //for creating multi selecter textfield
+                 
+                      Padding(
+                        padding: EdgeInsets.all(20.0),
+                        child: Row(
+                          children: [
+                            Flexible(
+                                                          child: TextFormField(
+                                // keyboardType: TextInputType.number,
+                                controller: tagfield,
+                                decoration: InputDecoration(
+                                  labelText: "Add your Service Category",
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: kcolorash),
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: kcolorash),
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                ),
+                                // The validator receives the text that the user has entered.
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Please Select your Service Category';
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ),
+                            Container(
+                        //color: Colors.yellow,
+                        child: IconButton(
+                            icon: Icon(Icons.send),
+                            onPressed: () {
+                              setState(() {
+                                selectedTags.add(tagfield.text);
+                                // tagsList.remove(value);
+                              });
+                              // _addTag(tagfield.text);
+                              tagfield.clear();
+                              //selectedTags.add(tagfield.text);
+                              //_generateTags();
+                            }),
+                      ),
+                          ],
+                        ),
+                      ),
+                      
+                   
+                  SizedBox(
+                    height: 20,
+                  ),
+                  _generateTags(),
                   Padding(
                       padding: EdgeInsets.all(20.0),
                       child: Row(
@@ -215,5 +272,48 @@ class _ServiceFormState extends State<ServiceForm> {
     phnController.dispose();
     licencenoController.dispose();
     //dropdownValue = " ";
+  }
+
+  _generateTags() {
+    return selectedTags.isEmpty
+        ? Container()
+        : Container(
+            alignment: Alignment.topLeft,
+            child: Tags(
+              alignment: WrapAlignment.center,
+              itemCount: selectedTags.length,
+              itemBuilder: (index) {
+                return ItemTags(
+                  index: index,
+                  title: selectedTags[index],
+                  color: Colors.grey,
+                  activeColor: Colors.grey[100],
+                  onPressed: (Item item) {
+                    print('pressed');
+                  },
+                  highlightColor: Colors.transparent,
+                  splashColor: Colors.transparent,
+                  elevation: 0.0,
+                  borderRadius: BorderRadius.all(Radius.circular(7.0)),
+//                textColor: ,
+                  textColor: Colors.black,
+                  textActiveColor: Colors.black,
+                  removeButton: ItemTagsRemoveButton(
+                      color: Colors.black,
+                      backgroundColor: Colors.transparent,
+                      size: 14,
+                      onRemoved: () {
+                        setState(() {
+                          selectedTags.remove(selectedTags[index]);
+                          //tagsList.add(value);
+                        });
+                        //_onTagRemoved(selectedTags[index]);
+                        return true;
+                      }),
+                  textOverflow: TextOverflow.ellipsis,
+                );
+              },
+            ),
+          );
   }
 }
