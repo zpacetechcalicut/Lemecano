@@ -194,9 +194,10 @@ class _ServiceFormState extends State<ServiceForm> {
                         Container(
                           //color: Colors.yellow,
                           child: IconButton(
-                              icon: Icon(Icons.send),
+                              icon: Icon(Icons.add),
                               onPressed: () {
                                 setState(() {
+                                  if(!(tagfield.text=='' || tagfield.text == null))
                                   selectedTags.add(tagfield.text);
                                   // tagsList.remove(value);
                                 });
@@ -226,9 +227,14 @@ class _ServiceFormState extends State<ServiceForm> {
                               // String newKey = dbRef.push().key;
                               if (_formKey.currentState.validate()) {
                                 //dbRef.push().set
-                                String newkey =
-                                    dbRef.child(' Service_Booking').push().key;
-                                dbRef.child('Taxi_Booking').child(newkey).set({
+                                String newkey = dbRef
+                                    .child('CreateService_Booking')
+                                    .push()
+                                    .key;
+                                dbRef
+                                    .child('CreateService_Booking')
+                                    .child(newkey)
+                                    .set({
                                   "t_id": newkey,
                                   "t_vehicle_no": vehiclennoController.text,
                                   "t_locality": localityController.text,
@@ -246,9 +252,11 @@ class _ServiceFormState extends State<ServiceForm> {
                                   phnController.clear();
                                   nameController.clear();
                                   licencenoController.clear();
-                                  selectedTags.clear();
-                                  tagfield.clear();
-                                  _generateTags();
+                                  setState(() {
+                                    selectedTags.clear();
+                                  });
+                                  //_formKey.currentState.reset();
+                                  //_generateTags();
                                 }).catchError((onError) {
                                   Scaffold.of(context).showSnackBar(
                                       SnackBar(content: Text(onError)));
@@ -274,6 +282,8 @@ class _ServiceFormState extends State<ServiceForm> {
     nameController.dispose();
     phnController.dispose();
     licencenoController.dispose();
+    tagfield.dispose();
+
     //dropdownValue = " ";
   }
 
