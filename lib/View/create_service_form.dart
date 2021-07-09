@@ -162,55 +162,54 @@ class _ServiceFormState extends State<ServiceForm> {
                     ),
                   ),
                   //for creating multi selecter textfield
-                 
-                      Padding(
-                        padding: EdgeInsets.all(20.0),
-                        child: Row(
-                          children: [
-                            Flexible(
-                                                          child: TextFormField(
-                                // keyboardType: TextInputType.number,
-                                controller: tagfield,
-                                decoration: InputDecoration(
-                                  labelText: "Add your Service Category",
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: kcolorash),
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: kcolorash),
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                ),
-                                // The validator receives the text that the user has entered.
-                                validator: (value) {
-                                  if (value.isEmpty) {
-                                    return 'Please Select your Service Category';
-                                  }
-                                  return null;
-                                },
+
+                  Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: Row(
+                      children: [
+                        Flexible(
+                          child: TextFormField(
+                            // keyboardType: TextInputType.number,
+                            controller: tagfield,
+                            decoration: InputDecoration(
+                              labelText: "Add your Service Category",
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: kcolorash),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: kcolorash),
+                                borderRadius: BorderRadius.circular(5.0),
                               ),
                             ),
-                            Container(
-                        //color: Colors.yellow,
-                        child: IconButton(
-                            icon: Icon(Icons.send),
-                            onPressed: () {
-                              setState(() {
-                                selectedTags.add(tagfield.text);
-                                // tagsList.remove(value);
-                              });
-                              // _addTag(tagfield.text);
-                              tagfield.clear();
-                              //selectedTags.add(tagfield.text);
-                              //_generateTags();
-                            }),
-                      ),
-                          ],
+                            // The validator receives the text that the user has entered.
+                            // validator: (value) {
+                            //   if (value.isEmpty) {
+                            //     return 'Please Select your Service Category';
+                            //   }
+                            //   return null;
+                            // },
+                          ),
                         ),
-                      ),
-                      
-                   
+                        Container(
+                          //color: Colors.yellow,
+                          child: IconButton(
+                              icon: Icon(Icons.send),
+                              onPressed: () {
+                                setState(() {
+                                  selectedTags.add(tagfield.text);
+                                  // tagsList.remove(value);
+                                });
+                                // _addTag(tagfield.text);
+                                tagfield.clear();
+                                //selectedTags.add(tagfield.text);
+                                //_generateTags();
+                              }),
+                        ),
+                      ],
+                    ),
+                  ),
+
                   SizedBox(
                     height: 20,
                   ),
@@ -228,7 +227,7 @@ class _ServiceFormState extends State<ServiceForm> {
                               if (_formKey.currentState.validate()) {
                                 //dbRef.push().set
                                 String newkey =
-                                    dbRef.child('Taxi_Booking').push().key;
+                                    dbRef.child(' Service_Booking').push().key;
                                 dbRef.child('Taxi_Booking').child(newkey).set({
                                   "t_id": newkey,
                                   "t_vehicle_no": vehiclennoController.text,
@@ -238,6 +237,7 @@ class _ServiceFormState extends State<ServiceForm> {
                                   "t_type": "Four Wheeler",
                                   "t_dname": nameController.text,
                                   "t_license": licencenoController.text,
+                                  "t_tagg": selectedTags,
                                 }).then((_) {
                                   Scaffold.of(context).showSnackBar(SnackBar(
                                       content: Text('Successfully Added')));
@@ -246,6 +246,9 @@ class _ServiceFormState extends State<ServiceForm> {
                                   phnController.clear();
                                   nameController.clear();
                                   licencenoController.clear();
+                                  selectedTags.clear();
+                                  tagfield.clear();
+                                  _generateTags();
                                 }).catchError((onError) {
                                   Scaffold.of(context).showSnackBar(
                                       SnackBar(content: Text(onError)));
